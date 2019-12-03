@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".bl.crud.Tablas">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/fondo"
+        android:alpha="0.6">
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="@dimen/letras"
+            android:fontFamily="cursive"
+            android:gravity="center"
+            android:text="Tiempos "
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/titulos"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginBottom="@dimen/letras"
+                android:fontFamily="@font/text_me_one"
+                android:gravity="center"
+                android:text="Titulo"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/letras"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginBottom="@dimen/letras"
+                android:fontFamily="@font/text_me_one"
+                android:gravity="center"
+                android:text="Tiempo"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/letras"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginBottom="@dimen/letras"
+                android:fontFamily="@font/text_me_one"
+                android:gravity="center"
+                android:text="Cantidad"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/letras"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerComidas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</RelativeLayout>

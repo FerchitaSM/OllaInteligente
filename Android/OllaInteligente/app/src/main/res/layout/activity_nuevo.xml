@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".bl.crud.Nuevo">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/fondo"
+        android:alpha="0.6">
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/letras"
+            android:fontFamily="cursive"
+            android:gravity="center"
+            android:text="Nuevo \n tiempo"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/titulos"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/text_me_one"
+            android:gravity="left"
+            android:text="TITULO"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/letras"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/EdTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/text_me_one"
+            android:gravity="left"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/letras"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/text_me_one"
+            android:gravity="left"
+            android:text="TIEMPO"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/letras"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/EdTiempo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/text_me_one"
+            android:gravity="left"
+            android:inputType="number"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/letras"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:orientation="vertical"
+                android:layout_marginRight="@dimen/titulos">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/text_me_one"
+                    android:gravity="left"
+                    android:text="CANTIDAD"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/letras"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/EdCantidad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/text_me_one"
+                    android:gravity="left"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/letras"
+                    android:textStyle="bold"
+                    android:inputType="number"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:orientation="vertical"
+                android:layout_marginLeft="@dimen/titulos">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/text_me_one"
+                    android:gravity="left"
+                    android:text="MEDIDA"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/letras"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/SpMedida"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dropdown" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btnSi"
+            android:layout_width="@dimen/botones"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/letras"
+            android:background="@color/colorPrimaryDark"
+            android:fontFamily="@font/text_me_one"
+            android:text="COMENZAR Y GUARDAR"
+            android:textAllCaps="false"
+            android:textColor="@color/colorLetras"
+            android:textSize="@dimen/letras"
+            />
+
+        <Button
+            android:id="@+id/btnNo"
+            android:layout_width="@dimen/botones"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/letras"
+            android:background="@color/colorPrimaryDark"
+            android:fontFamily="@font/text_me_one"
+            android:text="SOLO COMENZAR"
+            android:textAllCaps="false"
+            android:textColor="@color/colorLetras"
+            android:textSize="@dimen/letras" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Olla Inteigente</string>
+    <string-array name="medidas">
+        <item> Tasas</item>
+        <item> Gramos</item>
+        <item> Kilos</item>
+        <item> Unidad</item>
+    </string-array>
+
+</resources>

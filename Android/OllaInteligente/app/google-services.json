@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "935965287632",
+    "firebase_url": "https://cocinainteligenteiot.firebaseio.com",
+    "project_id": "cocinainteligenteiot",
+    "storage_bucket": "cocinainteligenteiot.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:935965287632:android:d0b7675ee5b830e8df2ad5",
+        "android_client_info": {
+          "package_name": "com.example.fernanda.ollainteligente"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "935965287632-t57mf9kt2nqolju9ichjh8makmqc8p16.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fernanda.ollainteligente",
+            "certificate_hash": "33ea704cd8b3d11d6fda6278f567592a3a0a70b3"
+          }
+        },
+        {
+          "client_id": "935965287632-vu7t7lts3bi0n80g7ko8v29qf8sr3nq2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAazMl7pKwnu6iWZD0gWgL13jHi75mpZY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "935965287632-vu7t7lts3bi0n80g7ko8v29qf8sr3nq2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
