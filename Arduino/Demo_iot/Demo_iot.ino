@@ -62,8 +62,6 @@ void loop() {
       pir_lectura =digitalRead(PIR); //Muestra 0 (sin gente), 1 (con gente)  
       temp.requestTemperatures();   //Se envía el comando para leer la temperatura
       temp_lectura = temp.getTempCByIndex(0); //Se obtiene la temperatura en ºC
-
-      Serial.println(temp_lectura);
       crear_accion( gas_lectura, pir_lectura, temp_lectura); 
-      delay(600);
+      delay(999);
 }
