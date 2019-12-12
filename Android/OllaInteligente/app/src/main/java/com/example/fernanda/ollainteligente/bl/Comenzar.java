@@ -7,11 +7,12 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.CountDownTimer;
 import android.support.v4.app.NotificationCompat;
+import android.text.TextUtils;
+import android.widget.Toast;
 
 import com.example.fernanda.ollainteligente.R;
 import com.example.fernanda.ollainteligente.dto.Comida;
 import com.example.fernanda.ollainteligente.dto.Datos;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -19,10 +20,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import net.danlew.android.joda.JodaTimeAndroid;
-
 import org.joda.time.DateTime;
 import org.joda.time.Minutes;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 
@@ -30,9 +32,11 @@ public class Comenzar {
     Comida comida;
     Context context;
 
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
     Datos datos = new Datos(0, 0, 0, 0);
     DateTime tiempo_inicial = new DateTime();
-    boolean aguaHervida= false;
+    boolean agua_hervida = false;
+    int tiempo_cambio=0;
 
     public Comenzar(Comida comida, Context context) {
         this.comida = comida;
@@ -42,6 +46,7 @@ public class Comenzar {
     }
 
     public void star() {
+        databaseReference = FirebaseDatabase.getInstance().getReference();
         int time = 35;
         if (comida.getTiempo()!= 0) {
             time = comida.getTiempo();
@@ -50,6 +55,7 @@ public class Comenzar {
             @Override
             public void onTick(long millisUntilFinished) {
                 if (notificacion()) {
+                    actualizar_comida();
                     cancel();
                 }
             }
@@ -57,9 +63,9 @@ public class Comenzar {
             @Override
             public void onFinish() {
                 notificar("La comida esta lista!");
+                actualizar_comida();
             }
         }.start();
-
 
     }
 
@@ -99,13 +105,15 @@ public class Comenzar {
                 notificar("El gas esta por encima de lo normal!");
             } else {
                 if (temp >= 83) { //la temperatura es mayor a 83C
-                    if (aguaHervida) {// el agua esta hervida
-                        if (time >= 15) { // paso mas de 15 minutos
+                    if (agua_hervida) {// el agua esta hervida
+                        if (time >= 15) { //15 paso mas de 15 minutos
                             notificar("La comida esta lista!");
                             notificado = true;
+                            tiempo_cambio+=time;
                         }
                     }else {
-                        aguaHervida= true;
+                        agua_hervida = true;
+                        tiempo_cambio=time;
                         tiempo_inicial = new DateTime();
                         notificar("El agua esta hervida!");
                     }
@@ -119,7 +127,6 @@ public class Comenzar {
     }
 
     private void leer_datos_firebase() {
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
         Query query = databaseReference.child("accion").limitToLast(1);
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -142,11 +149,26 @@ public class Comenzar {
     private int calcular_tiempo() {
         DateTime tiempo_actual = new DateTime();
         int restaM = Minutes.minutesBetween(tiempo_inicial, tiempo_actual).getMinutes();
-        System.out.println(restaM);
         return restaM;
     }
 
 
+    private void actualizar_comida() {
+        String id = comida.getId();
+        if(!TextUtils.isEmpty(id))
+        {
+            Map<String, Object> comidaMap = new HashMap<>();
+            comidaMap.put("id", comida.getId());
+            comidaMap.put("cantidad", comida.getId());
+            comidaMap.put("medida", comida.getMedida());
+            comidaMap.put("tiempo", tiempo_cambio);
+            comidaMap.put("titulo", comida.getTitulo());
+            databaseReference.child("Comida1").child(comida.getId()).updateChildren(comidaMap);
+        }
+    }
+
 }
+
+
 
 
