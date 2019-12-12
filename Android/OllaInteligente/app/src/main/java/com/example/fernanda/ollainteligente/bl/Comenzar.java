@@ -32,7 +32,7 @@ public class Comenzar {
 
     Datos datos = new Datos(0, 0, 0, 0);
     DateTime tiempo_inicial = new DateTime();
-
+    boolean aguaHervida= false;
 
     public Comenzar(Comida comida, Context context) {
         this.comida = comida;
@@ -42,11 +42,11 @@ public class Comenzar {
     }
 
     public void star() {
-        int time = 500;
+        int time = 35;
         if (comida.getTiempo()!= 0) {
             time = comida.getTiempo();
         }
-        CountDownTimer countDownTimer = new CountDownTimer(time * 60000, 1000) {
+        CountDownTimer countDownTimer = new CountDownTimer(time * 60000, 30000) { // cada 30 segundos
             @Override
             public void onTick(long millisUntilFinished) {
                 if (notificacion()) {
@@ -64,7 +64,6 @@ public class Comenzar {
     }
 
     private void notificar(String mensaje) {
-        init();
         NotificationCompat.Builder notificacion;
         final int idUnica = 51623;
 
@@ -90,7 +89,7 @@ public class Comenzar {
         leer_datos_firebase();
         int pir = datos.getPir();
         int gas = datos.getGas();
-        int temp = datos.getTemp();
+        float temp = datos.getTemp();
         int time = datos.getTime();
         boolean notificado = false;
         if (pir == 0) // esta ausente
@@ -99,14 +98,20 @@ public class Comenzar {
             {
                 notificar("El gas esta por encima de lo normal!");
             } else {
-                if (temp >= 80) { //la temperatura es mayor a 80C
-                    if (time >= 15) { // paso mas de 15 minutos
-                        notificar("La comida esta lista!");
-                        notificado = true;
-                    } else {
+                if (temp >= 83) { //la temperatura es mayor a 83C
+                    if (aguaHervida) {// el agua esta hervida
+                        if (time >= 15) { // paso mas de 15 minutos
+                            notificar("La comida esta lista!");
+                            notificado = true;
+                        }
+                    }else {
+                        aguaHervida= true;
+                        tiempo_inicial = new DateTime();
                         notificar("El agua esta hervida!");
                     }
+
                 }
+
             }
 
         }
@@ -115,14 +120,14 @@ public class Comenzar {
 
     private void leer_datos_firebase() {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-        Query query = databaseReference.child("accion").limitToFirst(1);
+        Query query = databaseReference.child("accion").limitToLast(1);
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot singleSnapshot : dataSnapshot.getChildren()) {
                     int gas = Integer.parseInt(singleSnapshot.child("gas").getValue().toString());
                     int pir = Integer.parseInt(singleSnapshot.child("pir").getValue().toString());
-                    int temp = Integer.parseInt(singleSnapshot.child("temp").getValue().toString());
+                    float temp = Float.parseFloat(singleSnapshot.child("temp").getValue().toString());
                     int time = calcular_tiempo();
                     datos = new Datos(pir, gas, temp, time);
                 }
@@ -141,11 +146,7 @@ public class Comenzar {
         return restaM;
     }
 
-    private void init() {
-        FirebaseApp.initializeApp(context);
-        JodaTimeAndroid.init(context);
-        tiempo_inicial = new DateTime();
-    }
+
 }
 
 

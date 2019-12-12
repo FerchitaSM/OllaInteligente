@@ -25,7 +25,7 @@ public class Nuevo extends AppCompatActivity implements AdapterView.OnItemSelect
     EditText EdTitulo,EdTiempo, EdCantidad;
     Spinner SpMedida;
     String titulo,cantidad,medida;
-    int tiempo;
+    int tiempo=0;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReferenceP;
 
@@ -81,8 +81,12 @@ public class Nuevo extends AppCompatActivity implements AdapterView.OnItemSelect
     private boolean validar(){
 
         titulo=EdTitulo.getText().toString().trim();
-        tiempo= Integer.parseInt(EdTiempo.getText().toString().trim());
         cantidad=EdCantidad.getText().toString().trim();
+        if (TextUtils.isEmpty(EdTiempo.getText().toString().trim())) {
+            tiempo= 0;
+        }else{
+            tiempo= Integer.parseInt(EdTiempo.getText().toString().trim());
+        }
         if (TextUtils.isEmpty(titulo)|| TextUtils.isEmpty(cantidad)) { // validar que los espacios esten llenos
             Toast.makeText(getApplicationContext(), "no debe existir campos vacios"+tiempo, Toast.LENGTH_LONG).show();
             return false;

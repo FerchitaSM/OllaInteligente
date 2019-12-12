@@ -9,8 +9,6 @@ import android.widget.Button;
 import com.example.fernanda.ollainteligente.bl.crud.Nuevo;
 import com.example.fernanda.ollainteligente.bl.crud.Tablas;
 
-import net.danlew.android.joda.JodaTimeAndroid;
-
 
 public class MainActivity extends AppCompatActivity {
     Button btnNuevo;
@@ -22,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
-        JodaTimeAndroid.init(this);
 
         btnNuevo = (Button) findViewById(R.id.btnNuevo);
         btnVer = (Button) findViewById(R.id.btnVer);

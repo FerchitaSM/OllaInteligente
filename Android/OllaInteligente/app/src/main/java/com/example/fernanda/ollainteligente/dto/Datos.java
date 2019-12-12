@@ -2,12 +2,12 @@ package com.example.fernanda.ollainteligente.dto;
 
 public class Datos {
     private String id;
-    private int pir, gas, temp, time;
-
+    private int pir, gas, time;
+    private float temp;
     public Datos() {
     }
 
-    public Datos(String id, int pir, int gas, int temp, int time) {
+    public Datos(String id, int pir, int gas, float temp, int time) {
         this.id = id;
         this.pir = pir;
         this.gas = gas;
@@ -15,7 +15,7 @@ public class Datos {
         this.time = time;
     }
 
-    public Datos(int pir, int gas, int temp, int time) {
+    public Datos(int pir, int gas, float temp, int time) {
         this.pir = pir;
         this.gas = gas;
         this.temp = temp;
@@ -46,11 +46,11 @@ public class Datos {
         this.gas = gas;
     }
 
-    public int getTemp() {
+    public float getTemp() {
         return temp;
     }
 
-    public void setTemp(int temp) {
+    public void setTemp(float temp) {
         this.temp = temp;
     }
 

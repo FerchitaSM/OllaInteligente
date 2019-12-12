@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
-            android:layout_marginTop="180dp"
+            android:layout_marginTop="60dp"
             android:fontFamily="cursive"
             android:gravity="center"
             android:text="Cocina \n inteligente"
