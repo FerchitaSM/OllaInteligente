@@ -106,7 +106,7 @@ public class Comenzar {
             } else {
                 if (temp >= 83) { //la temperatura es mayor a 83C
                     if (agua_hervida) {// el agua esta hervida
-                        if (time >= 15) { //15 paso mas de 15 minutos
+                        if (time >= 10) { //15 paso mas de 15 minutos
                             notificar("La comida esta lista!");
                             notificado = true;
                             tiempo_cambio+=time;
